@@ -36,7 +36,7 @@ write.csv(df_sub,"genes of the same mean difference direction.csv")
 
 Select only ICU patients from GSE157103
 ```{r}
-df <- read.delim("GSE157103_genes.tpm.tsv",header = TRUE,sep = "\t",row.names = 1)
+df <- data1
 df = as.data.frame(t(df))
 info <- read.csv("patients_info.csv",header = TRUE)
 info <- info[match(row.names(df),info$Albany_sampleID),]
@@ -224,7 +224,7 @@ Perform DE Analysis on Training Set
 80% of GSE157103 will be used as training, 20% as testing
 ```{r}
 library(caret)
-split <- createDataPartition(subsetDf$label,list=FALSE, p=0.8)
+split <- createDataPartition(subsetDf$COVID,list=FALSE, p=0.8)
 training <- subsetDf[split,]
 test <- subsetDf[-split,]
 
